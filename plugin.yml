@@ -1,0 +1,42 @@
+name: Moderator
+main: hs.scraayp.mod.Mod
+version: v0.0.1
+prefix: MOD
+description: Just a moderation plugin
+author: Scraayp
+database: false
+default-permission: op
+website: https://discord.gg/uW6FEwd
+authors:
+  - Scraayp (Scraayp#9050)
+  - Bossier (Bossier#6643)
+api-version: 1.16
+
+
+permissions:
+  mod.*:
+    description: Get permission to use every command!
+    default: op
+    children:
+      - mod
+      - mod.kick
+  mod:
+    description: Get acces to help command!
+    default: op
+  mod.kick:
+    description: Get acces to the kick command!
+    default: op
+
+commands:
+  modhelp:
+    description: Get all commands and permissions!
+    aliases: [mod-help, mod, helpmod]
+    permission: mod
+    permission-message: You're not allowed to use this command!
+    usage: "Usage: /modhelp"
+  kick:
+    description: Kick someone from the server!
+    aliases: [getout]
+    permission: mod.kick
+    permission-message: You're not allowed to use this command!
+    usage: "Usage: /kick <player> [reason]"

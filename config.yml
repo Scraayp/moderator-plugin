@@ -1,0 +1,7 @@
+# WATCH OUT WITH EDITING!!! READ THE DESCRIPTIONS BEFORE DOING SOMETHING
+
+# If the moderation action should be send globally ([user] has been banned for "reason")
+# or If it should be send to only mods!
+# log-type can be: global, staff or false
+log-type: global
+
