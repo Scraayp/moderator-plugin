@@ -2,6 +2,6 @@
 
 # If the moderation action should be send globally ([user] has been banned for "reason")
 # or If it should be send to only mods!
-# log-type can be: global, staff or false
+# log-type can be: global, staff or none
 log-type: global
 
