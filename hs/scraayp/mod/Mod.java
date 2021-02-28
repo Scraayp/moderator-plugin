@@ -1,22 +1,18 @@
 package hs.scraayp.mod;
 
-import hs.scraayp.mod.commands.Help;
-import hs.scraayp.mod.commands.Kick;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import hs.scraayp.mod.commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Logger;
 
 public class Mod extends JavaPlugin {
-    public FileConfiguration config = this.getConfig();
+    public static Mod plugin;
     @Override
     public void onEnable(){
+        plugin = this;
         getCommand("modhelp").setExecutor(new Help());
         getCommand("kick").setExecutor(new Kick());
+        getCommand("ban").setExecutor(new Ban());
+        getCommand("scraayp").setExecutor(new Scraayp());
         getLogger().info("Moderation has been enabled!");
         saveDefaultConfig();
     }

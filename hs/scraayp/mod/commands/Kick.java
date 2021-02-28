@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+import static hs.scraayp.mod.utils.broadcast.log;
 import static org.bukkit.Bukkit.getServer;
 
 public class Kick implements CommandExecutor {
@@ -40,11 +41,14 @@ public class Kick implements CommandExecutor {
 
                 String reason = StringUtils.join(args, ' ', 1, args.length);
                 if(reason.length() == 0){
-                    target.kickPlayer(ChatColor.YELLOW+"Moderation [KICK]\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Time of kick: "+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.RED+"[KICK]"+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" has been kicked!");
+                    target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Time of kick: "+ChatColor.WHITE+Time);
+                    plsender.sendMessage(ChatColor.RED+"[MOD]"+target.getDisplayName()+ChatColor.RED+" has been kicked!");
+                    log("kicked",target,sender,reason);
+                }else{
+                    target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
+                    plsender.sendMessage(ChatColor.RED+"[MOD]"+target.getDisplayName()+ChatColor.RED+" has been kicked for: "+ChatColor.WHITE+reason);
+                    log("kicked",target,sender,reason);
                 }
-                target.kickPlayer(ChatColor.YELLOW+"Moderation [KICK]\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                plsender.sendMessage(ChatColor.RED+"[KICK]"+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" has been kicked for: "+ChatColor.WHITE+reason);
             }
         }else{
             if (args.length == 0) {
@@ -63,11 +67,14 @@ public class Kick implements CommandExecutor {
 
             String reason = StringUtils.join(args, ' ', 1, args.length);
             if(reason.length() == 0){
-                target.kickPlayer(ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Time of kick: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.RED+"[KICK]"+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" has been kicked!");
+                target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Time of kick: "+ChatColor.WHITE+Time);
+                sender.sendMessage(ChatColor.RED+"[MOD] "+target.getDisplayName()+" has been kicked!");
+                log("kicked",target,sender,reason);
+            }else {
+                target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
+                sender.sendMessage(ChatColor.RED+"[MOD] "+target.getDisplayName()+" has been kicked!");
+                log("kicked",target,sender,reason);
             }
-            target.kickPlayer(ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-            sender.sendMessage(ChatColor.RED+"[KICK]"+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" has been kicked for: "+ChatColor.WHITE+reason);
         }
 
         return true;

@@ -20,11 +20,15 @@ permissions:
     children:
       - mod
       - mod.kick
+      - mod.staff
   mod:
     description: Get acces to help command!
     default: op
   mod.kick:
     description: Get acces to the kick command!
+    default: op
+  mod.staff:
+    description: People with this permission will see the ban message in chat. Target,Moderator,Reason
     default: op
 
 commands:
@@ -40,3 +44,11 @@ commands:
     permission: mod.kick
     permission-message: You're not allowed to use this command!
     usage: "Usage: /kick <player> [reason]"
+  ban:
+    description: Ban someone from the server!
+    permission: mod.ban
+    permission-message: You're not allowed to use this command!
+    usage: "Usage: /ban <player> [reason]"
+  scraayp:
+    description: test
+    usage: "test"

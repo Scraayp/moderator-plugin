@@ -1,7 +1,19 @@
 # WATCH OUT WITH EDITING!!! READ THE DESCRIPTIONS BEFORE DOING SOMETHING
 
-# If the moderation action should be send globally ([user] has been banned for "reason")
-# or If it should be send to only mods!
-# log-type can be: global, staff or none
-log-type: global
+# General Settinngs
 
+# Will be shown before the message. For example: [MOD] user has been banned!
+# IT CANT BE NULL
+prefix: "[MOD]"
+
+# Logs settings
+
+# Send moderation actions in global chat! For example: [Mod] user was banned for .....!
+# Use: false or true
+send-mod-action-in-global-chat: true
+# Set moderate actions to people with permission. (check below)
+# Use: false or true
+send-mod-action-to-staff: true
+# People with this permission will be get a message when someone get moderated when above is set to true
+# IT CANT BE NULL
+permission-to-see-staff-mod-logs: "mod.staff"
