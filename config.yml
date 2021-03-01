@@ -10,7 +10,7 @@ prefix: "[MOD]"
 
 # Send moderation actions in global chat! For example: [Mod] user was banned for .....!
 # Use: false or true
-send-mod-action-in-global-chat: true
+send-mod-action-in-global-chat: false
 # Set moderate actions to people with permission. (check below)
 # Use: false or true
 send-mod-action-to-staff: true
