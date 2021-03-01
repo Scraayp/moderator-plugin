@@ -48,21 +48,27 @@ public class Ban implements CommandExecutor {
                 if(sender instanceof Player){
                     banner = sender.getName();
                 }
+                Number times = 0;
+                if(config.getInt("banned_players."+target.getDisplayName()+".times") > 0){
+                    times = config.getInt("banned_players."+target.getDisplayName()+".times");
+                }
                 config.set("banned_players."+target.getDisplayName()+".banner", banner);
+                config.set("banned_players."+target.getDisplayName()+".banned", true);
+                config.set("banned_players."+target.getDisplayName()+".times", times);
                 if(reason.length() == 0){
-                    target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Time of ban: \n"+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.RED+"[MOD]"+target.getDisplayName()+ChatColor.RED+" has been banned!");
+                    target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Time of ban: \n"+ChatColor.WHITE+Time);
+                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
                     log("banned",target,sender,reason);
                 }else{
                     config.set("banned_players."+target.getDisplayName()+".reason", reason);
-                    target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.RED+"[MOD]"+target.getDisplayName()+ChatColor.RED+" has been banned for: "+ChatColor.WHITE+reason);
+                    target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
+                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
                     log("banned",target,sender,reason);
                 }
             }
         }else{
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED + "Correct syntax: /ban <player> [reason]");
+                sender.sendMessage(ChatColor.RED+"Correct syntax: /ban <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
@@ -82,15 +88,21 @@ public class Ban implements CommandExecutor {
             if(sender instanceof Player){
                 banner = sender.getName();
             }
+            Number times = 0;
+            if(config.getInt("banned_players."+target.getDisplayName()+".times") > 0){
+                times = config.getInt("banned_players."+target.getDisplayName()+".times");
+            }
             config.set("banned_players."+target.getDisplayName()+".banner", banner);
+            config.set("banned_players."+target.getDisplayName()+".banned", true);
+            config.set("banned_players."+target.getDisplayName()+".times", times);
             if(reason.length() == 0){
-                target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Length: \n"+ChatColor.WHITE+"permanent\n"+ChatColor.AQUA+"Time of ban: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.RED+"[MOD] "+target.getDisplayName()+" has been banned!");
+                target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Length: \n"+ChatColor.WHITE+"permanent\n"+ChatColor.AQUA+"Time of ban: "+ChatColor.WHITE+Time);
+                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
                 log("banned",target,sender,reason);
             }else {
                 config.set("banned_players."+target.getDisplayName()+".reason", reason);
-                target.kickPlayer(ChatColor.YELLOW+"Moderation [MOD]\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"Length: "+ChatColor.WHITE+"permanent"+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.RED+"[MOD] "+target.getDisplayName()+" has been banned!");
+                target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"Length: "+ChatColor.WHITE+"permanent"+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
+                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
                 log("banned",target,sender,reason);
             }
         }

@@ -49,6 +49,11 @@ commands:
     permission: mod.ban
     permission-message: You're not allowed to use this command!
     usage: "Usage: /ban <player> [reason]"
+  unban:
+    description: Unban someone from the server!
+    premission: mod.unban
+    permission-message: You're not allowed to use this command!
+    usage: "Usage: /unban <player>"
   scraayp:
     description: test
     usage: "test"

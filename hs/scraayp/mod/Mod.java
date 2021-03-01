@@ -14,6 +14,7 @@ public class Mod extends JavaPlugin {
         getCommand("modhelp").setExecutor(new Help());
         getCommand("kick").setExecutor(new Kick());
         getCommand("ban").setExecutor(new Ban());
+        getCommand("unban").setExecutor(new Unban());
         getCommand("scraayp").setExecutor(new Scraayp());
         getLogger().info("Moderation has been enabled!");
         saveDefaultConfig();
