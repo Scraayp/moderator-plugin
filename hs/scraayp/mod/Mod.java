@@ -1,6 +1,7 @@
 package hs.scraayp.mod;
 
 import hs.scraayp.mod.commands.*;
+import hs.scraayp.mod.events.Chat;
 import hs.scraayp.mod.events.PlayerJoin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,11 +12,13 @@ public class Mod extends JavaPlugin {
     public void onEnable(){
         plugin = this;
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new Chat(), this);
         getCommand("modhelp").setExecutor(new Help());
         getCommand("kick").setExecutor(new Kick());
         getCommand("ban").setExecutor(new Ban());
         getCommand("unban").setExecutor(new Unban());
         getCommand("scraayp").setExecutor(new Scraayp());
+        getCommand("mute").setExecutor(new Mute());
         getLogger().info("Moderation has been enabled!");
         saveDefaultConfig();
     }

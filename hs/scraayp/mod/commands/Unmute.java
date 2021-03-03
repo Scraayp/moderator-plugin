@@ -1,6 +1,7 @@
 package hs.scraayp.mod.commands;
 
 import hs.scraayp.mod.Mod;
+import org.bukkit.BanList;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,7 +19,7 @@ import java.util.UUID;
 import static hs.scraayp.mod.utils.broadcast.log;
 import static org.bukkit.Bukkit.getServer;
 
-public class Kick implements CommandExecutor {
+public class Unmute implements CommandExecutor {
     static FileConfiguration config = Mod.plugin.getConfig();
     static String prefix = config.getString("prefix");
     @Override
@@ -26,39 +27,45 @@ public class Kick implements CommandExecutor {
         if(sender instanceof Player){
             Player plsender = (Player) sender;
             if (args.length == 0) {
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /kick <player> [reason]");
+                plsender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
             if(target == null){
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /kick <player> [reason]");
+                plsender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
                 return true;
             }
-            if(plsender.hasPermission(config.getString("perm-kick"))){
+            if(plsender.hasPermission(config.getString("perm-unmute"))){
                 // Time
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 String Time = now.format(format);
 
                 String reason = StringUtils.join(args, ' ', 1, args.length);
+
+                // Add it to config
+                String banner = "Server";
+                if(sender instanceof Player){
+                    banner = sender.getName();
+                }
+                config.set("muted_players."+target.getDisplayName()+".muted", false);
                 if(reason.length() == 0){
-                    target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Time of kick: "+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been kicked!");
-                    log("kicked",target,sender,reason);
+                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
+                    log("unmuted",target,sender,reason);
                 }else{
-                    target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been kicked!");
-                    log("kicked",target,sender,reason);
+                    config.set("muted_players."+target.getDisplayName()+".reason", reason);
+                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
+                    log("unmuted",target,sender,reason);
                 }
             }
         }else{
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /kick <player> [reason]");
+                sender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
             if(target == null){
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /kick <player> [reason]");
+                sender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
                 return true;
             }
             // Time
@@ -67,14 +74,20 @@ public class Kick implements CommandExecutor {
             String Time = now.format(format);
 
             String reason = StringUtils.join(args, ' ', 1, args.length);
+
+            // Add it to config
+            String banner = "Server";
+            if(sender instanceof Player){
+                banner = sender.getName();
+            }
+            config.set("muted_players."+target.getDisplayName()+".muted", false);
             if(reason.length() == 0){
-                target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Time of kick: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been kicked!");
-                log("kicked",target,sender,reason);
+                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
+                log("unmuted",target,sender,reason);
             }else {
-                target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been kicked by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been kicked!");
-                log("kicked",target,sender,reason);
+                config.set("muted_players."+target.getDisplayName()+".reason", reason);
+                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
+                log("unmuted",target,sender,reason);
             }
         }
 

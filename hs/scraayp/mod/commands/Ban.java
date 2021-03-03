@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import static hs.scraayp.mod.utils.broadcast.log;
+import static org.bukkit.Bukkit.getOfflinePlayer;
 import static org.bukkit.Bukkit.getServer;
 
 public class Ban implements CommandExecutor {
@@ -35,7 +36,7 @@ public class Ban implements CommandExecutor {
                 plsender.sendMessage(ChatColor.RED+"Correct syntax: /ban <player> [reason]");
                 return true;
             }
-            if(plsender.hasPermission("mod.ban")){
+            if(plsender.hasPermission(config.getString("perm-ban"))){
                 // Time
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");

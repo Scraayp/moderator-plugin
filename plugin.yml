@@ -21,6 +21,7 @@ permissions:
       - mod
       - mod.kick
       - mod.staff
+      - mod.chatbypass
   mod:
     description: Get acces to help command!
     default: op
@@ -30,30 +31,30 @@ permissions:
   mod.staff:
     description: People with this permission will see the ban message in chat. Target,Moderator,Reason
     default: op
+  mod.chatbypass:
+    description: Bypass the lockdown chat
+    default: op
+
+  # THE PERMISSIONS CAN BE FULL CUSTOMIZABLE IN CONFIG
 
 commands:
   modhelp:
     description: Get all commands and permissions!
     aliases: [mod-help, mod, helpmod]
-    permission: mod
-    permission-message: You're not allowed to use this command!
     usage: "Usage: /modhelp"
   kick:
     description: Kick someone from the server!
     aliases: [getout]
-    permission: mod.kick
-    permission-message: You're not allowed to use this command!
     usage: "Usage: /kick <player> [reason]"
   ban:
     description: Ban someone from the server!
-    permission: mod.ban
-    permission-message: You're not allowed to use this command!
     usage: "Usage: /ban <player> [reason]"
   unban:
     description: Unban someone from the server!
-    premission: mod.unban
-    permission-message: You're not allowed to use this command!
     usage: "Usage: /unban <player>"
+  mute:
+    description: Mute someone in the server!
+    usage: "Usage: /mute <player> [reason]"
   scraayp:
     description: test
     usage: "test"

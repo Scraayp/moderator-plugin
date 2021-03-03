@@ -14,6 +14,21 @@ send-mod-action-in-global-chat: false
 # Set moderate actions to people with permission. (check below)
 # Use: false or true
 send-mod-action-to-staff: true
-# People with this permission will be get a message when someone get moderated when above is set to true
-# IT CANT BE NULL
-permission-to-see-staff-mod-logs: "mod.staff"
+
+
+
+
+
+
+# Permissions:
+
+# NONE OF THOSE CAN BE NULL
+perm-ban: "mod.ban"
+perm-kick: "mod.kick"
+perm-unban: "mod.unban"
+perm-mute: "mod.mute"
+perm-unmute: "mod.unmute"
+
+perm-modlog: "mod.staff"
+
+perm-chatlock-bypass: "mod.lockbypass"

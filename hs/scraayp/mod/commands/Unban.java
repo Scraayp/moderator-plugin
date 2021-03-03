@@ -20,7 +20,7 @@ public class Unban implements CommandExecutor {
                 return true;
             }
             String target = args[0];
-            if(plsender.hasPermission("mod.unban")){
+            if(plsender.hasPermission(config.getString("perm-unban"))){
                 if(config.getString("banned_players."+target+".banned") == null){
                     plsender.sendMessage(ChatColor.RED+"Correct syntax: /unban <player>");
                     return true;

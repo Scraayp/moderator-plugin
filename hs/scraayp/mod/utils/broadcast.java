@@ -20,14 +20,14 @@ public class broadcast {
                     Player modsender = (Player) mod;
                     broadcastMessage(ChatColor.YELLOW+prefix+ChatColor.RED+" "+target.getDisplayName()+" was "+method+" by "+modsender.getDisplayName());
                 }else{
-                    broadcastMessage(ChatColor.YELLOW+prefix+ChatColor.RED+" "+target.getDisplayName()+" was "+method+" by "+"an moderator");
+                    broadcastMessage(ChatColor.YELLOW+prefix+ChatColor.RED+" "+target.getDisplayName()+" was "+method+" by "+"server");
                 }
             }else {
                 if(mod instanceof Player){
                     Player modsender = (Player) mod;
                     broadcastMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" was "+method+" for "+reason+" by "+modsender.getDisplayName());
                 }else{
-                    broadcastMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" was "+method+" for "+reason+" by "+"an moderator");
+                    broadcastMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" was "+method+" for "+reason+" by "+"server");
                 }
             }
         }
@@ -35,16 +35,16 @@ public class broadcast {
             if (reason.length() == 0) {
                 if (mod instanceof Player) {
                     Player modsender = (Player) mod;
-                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " by " + modsender.getDisplayName(), config.getString("permission-to-see-staff-mod-logs"));
+                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " by " + modsender.getDisplayName(), config.getString("perm-modlog"));
                 } else {
-                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " by " + "console", config.getString("permission-to-see-staff-mod-logs"));
+                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " by " + "server", config.getString("perm-modlog"));
                 }
             } else {
                 if (mod instanceof Player) {
                     Player modsender = (Player) mod;
-                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " for " + reason + " by " + modsender.getDisplayName(), config.getString("permission-to-see-staff-mod-logs"));
+                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " for " + reason + " by " + modsender.getDisplayName(), config.getString("perm-modlog"));
                 } else {
-                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " for " + reason + " by " + "console", config.getString("permission-to-see-staff-mod-logs"));
+                    broadcast(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " was " + method + " for " + reason + " by " + "server", config.getString("perm-modlog"));
                 }
             }
         }
