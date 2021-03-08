@@ -14,7 +14,7 @@ public class Scraayp implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player target = getPlayer("Scraayp");
         String reason = StringUtils.join(args, ' ', 0, args.length);
-        log("banned",target,sender,reason);
+        log("banned", target, sender, reason);
         sender.sendMessage("test");
         return true;
     }

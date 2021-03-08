@@ -23,20 +23,21 @@ import static org.bukkit.Bukkit.getServer;
 public class Ban implements CommandExecutor {
     static FileConfiguration config = Mod.plugin.getConfig();
     static String prefix = config.getString("prefix");
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player plsender = (Player) sender;
             if (args.length == 0) {
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /ban <player> [reason]");
+                plsender.sendMessage(ChatColor.RED + "Correct syntax: /ban <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
-            if(target == null){
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /ban <player> [reason]");
+            if (target == null) {
+                plsender.sendMessage(ChatColor.RED + "Correct syntax: /ban <player> [reason]");
                 return true;
             }
-            if(plsender.hasPermission(config.getString("perm-ban"))){
+            if (plsender.hasPermission(config.getString("perm-ban"))) {
                 // Time
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -46,35 +47,35 @@ public class Ban implements CommandExecutor {
 
                 // Add it to config
                 String banner = "Server";
-                if(sender instanceof Player){
+                if (sender instanceof Player) {
                     banner = sender.getName();
                 }
                 Number times = 0;
-                if(config.getInt("banned_players."+target.getDisplayName()+".times") > 0){
-                    times = config.getInt("banned_players."+target.getDisplayName()+".times");
+                if (config.getInt("banned_players." + target.getDisplayName() + ".times") > 0) {
+                    times = config.getInt("banned_players." + target.getDisplayName() + ".times");
                 }
-                config.set("banned_players."+target.getDisplayName()+".banner", banner);
-                config.set("banned_players."+target.getDisplayName()+".banned", true);
-                config.set("banned_players."+target.getDisplayName()+".times", times);
-                if(reason.length() == 0){
-                    target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Time of ban: \n"+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
-                    log("banned",target,sender,reason);
-                }else{
-                    config.set("banned_players."+target.getDisplayName()+".reason", reason);
-                    target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
-                    log("banned",target,sender,reason);
+                config.set("banned_players." + target.getDisplayName() + ".banner", banner);
+                config.set("banned_players." + target.getDisplayName() + ".banned", true);
+                config.set("banned_players." + target.getDisplayName() + ".times", times);
+                if (reason.length() == 0) {
+                    target.kickPlayer(ChatColor.YELLOW + prefix + "\n\n" + ChatColor.RED + "You have been banned by an moderator!\n\n" + ChatColor.AQUA + "Time of ban: \n" + ChatColor.WHITE + Time);
+                    plsender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been banned!");
+                    log("banned", target, sender, reason);
+                } else {
+                    config.set("banned_players." + target.getDisplayName() + ".reason", reason);
+                    target.kickPlayer(ChatColor.YELLOW + prefix + "\n\n" + ChatColor.RED + "You have been banned by an moderator!\n\n" + ChatColor.AQUA + "Reason: " + ChatColor.WHITE + reason + ChatColor.AQUA + "\nTime of kick: " + ChatColor.WHITE + Time);
+                    plsender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been banned!");
+                    log("banned", target, sender, reason);
                 }
             }
-        }else{
+        } else {
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /ban <player> [reason]");
+                sender.sendMessage(ChatColor.RED + "Correct syntax: /ban <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
-            if(target == null){
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /ban <player> [reason]");
+            if (target == null) {
+                sender.sendMessage(ChatColor.RED + "Correct syntax: /ban <player> [reason]");
                 return true;
             }
             // Time
@@ -86,25 +87,25 @@ public class Ban implements CommandExecutor {
 
             // Add it to config
             String banner = "Server";
-            if(sender instanceof Player){
+            if (sender instanceof Player) {
                 banner = sender.getName();
             }
             Number times = 0;
-            if(config.getInt("banned_players."+target.getDisplayName()+".times") > 0){
-                times = config.getInt("banned_players."+target.getDisplayName()+".times");
+            if (config.getInt("banned_players." + target.getDisplayName() + ".times") > 0) {
+                times = config.getInt("banned_players." + target.getDisplayName() + ".times");
             }
-            config.set("banned_players."+target.getDisplayName()+".banner", banner);
-            config.set("banned_players."+target.getDisplayName()+".banned", true);
-            config.set("banned_players."+target.getDisplayName()+".times", times);
-            if(reason.length() == 0){
-                target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Length: \n"+ChatColor.WHITE+"permanent\n"+ChatColor.AQUA+"Time of ban: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
-                log("banned",target,sender,reason);
-            }else {
-                config.set("banned_players."+target.getDisplayName()+".reason", reason);
-                target.kickPlayer(ChatColor.YELLOW+prefix+"\n\n"+ChatColor.RED+"You have been banned by an moderator!\n\n"+ChatColor.AQUA+"Reason: "+ChatColor.WHITE+reason+ChatColor.AQUA+"Length: "+ChatColor.WHITE+"permanent"+ChatColor.AQUA+"\nTime of kick: "+ChatColor.WHITE+Time);
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been banned!");
-                log("banned",target,sender,reason);
+            config.set("banned_players." + target.getDisplayName() + ".banner", banner);
+            config.set("banned_players." + target.getDisplayName() + ".banned", true);
+            config.set("banned_players." + target.getDisplayName() + ".times", times);
+            if (reason.length() == 0) {
+                target.kickPlayer(ChatColor.YELLOW + prefix + "\n\n" + ChatColor.RED + "You have been banned by an moderator!\n\n" + ChatColor.AQUA + "Length: \n" + ChatColor.WHITE + "permanent\n" + ChatColor.AQUA + "Time of ban: " + ChatColor.WHITE + Time);
+                sender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been banned!");
+                log("banned", target, sender, reason);
+            } else {
+                config.set("banned_players." + target.getDisplayName() + ".reason", reason);
+                target.kickPlayer(ChatColor.YELLOW + prefix + "\n\n" + ChatColor.RED + "You have been banned by an moderator!\n\n" + ChatColor.AQUA + "Reason: " + ChatColor.WHITE + reason + ChatColor.AQUA + "Length: " + ChatColor.WHITE + "permanent" + ChatColor.AQUA + "\nTime of kick: " + ChatColor.WHITE + Time);
+                sender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been banned!");
+                log("banned", target, sender, reason);
             }
         }
 

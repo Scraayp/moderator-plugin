@@ -22,20 +22,21 @@ import static org.bukkit.Bukkit.getServer;
 public class Unmute implements CommandExecutor {
     static FileConfiguration config = Mod.plugin.getConfig();
     static String prefix = config.getString("prefix");
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player plsender = (Player) sender;
             if (args.length == 0) {
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
+                plsender.sendMessage(ChatColor.RED + "Correct syntax: /unmute <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
-            if(target == null){
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
+            if (target == null) {
+                plsender.sendMessage(ChatColor.RED + "Correct syntax: /unmute <player> [reason]");
                 return true;
             }
-            if(plsender.hasPermission(config.getString("perm-unmute"))){
+            if (plsender.hasPermission(config.getString("perm-unmute"))) {
                 // Time
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -45,27 +46,27 @@ public class Unmute implements CommandExecutor {
 
                 // Add it to config
                 String banner = "Server";
-                if(sender instanceof Player){
+                if (sender instanceof Player) {
                     banner = sender.getName();
                 }
-                config.set("muted_players."+target.getDisplayName()+".muted", false);
-                if(reason.length() == 0){
-                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
-                    log("unmuted",target,sender,reason);
-                }else{
-                    config.set("muted_players."+target.getDisplayName()+".reason", reason);
-                    plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
-                    log("unmuted",target,sender,reason);
+                config.set("muted_players." + target.getDisplayName() + ".muted", false);
+                if (reason.length() == 0) {
+                    plsender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been unmuted!");
+                    log("unmuted", target, sender, reason);
+                } else {
+                    config.set("muted_players." + target.getDisplayName() + ".reason", reason);
+                    plsender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been unmuted!");
+                    log("unmuted", target, sender, reason);
                 }
             }
-        }else{
+        } else {
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
+                sender.sendMessage(ChatColor.RED + "Correct syntax: /unmute <player> [reason]");
                 return true;
             }
             Player target = getServer().getPlayer(args[0]);
-            if(target == null){
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /unmute <player> [reason]");
+            if (target == null) {
+                sender.sendMessage(ChatColor.RED + "Correct syntax: /unmute <player> [reason]");
                 return true;
             }
             // Time
@@ -77,17 +78,17 @@ public class Unmute implements CommandExecutor {
 
             // Add it to config
             String banner = "Server";
-            if(sender instanceof Player){
+            if (sender instanceof Player) {
                 banner = sender.getName();
             }
-            config.set("muted_players."+target.getDisplayName()+".muted", false);
-            if(reason.length() == 0){
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
-                log("unmuted",target,sender,reason);
-            }else {
-                config.set("muted_players."+target.getDisplayName()+".reason", reason);
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target.getDisplayName()+" has been unmuted!");
-                log("unmuted",target,sender,reason);
+            config.set("muted_players." + target.getDisplayName() + ".muted", false);
+            if (reason.length() == 0) {
+                sender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been unmuted!");
+                log("unmuted", target, sender, reason);
+            } else {
+                config.set("muted_players." + target.getDisplayName() + ".reason", reason);
+                sender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target.getDisplayName() + " has been unmuted!");
+                log("unmuted", target, sender, reason);
             }
         }
 

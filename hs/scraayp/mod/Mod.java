@@ -8,8 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Mod extends JavaPlugin {
     public static Mod plugin;
+
     @Override
-    public void onEnable(){
+    public void onEnable() {
         plugin = this;
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new Chat(), this);
@@ -23,6 +24,7 @@ public class Mod extends JavaPlugin {
         getLogger().info("Moderation has been enabled!");
         saveDefaultConfig();
     }
+
     @Override
     public void onDisable() {
         getLogger().info("Moderation has been disabled!");

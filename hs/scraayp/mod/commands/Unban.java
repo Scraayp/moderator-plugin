@@ -11,36 +11,37 @@ import org.bukkit.entity.Player;
 public class Unban implements CommandExecutor {
     static FileConfiguration config = Mod.plugin.getConfig();
     static String prefix = config.getString("prefix");
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player plsender = (Player) sender;
             if (args.length == 0) {
-                plsender.sendMessage(ChatColor.RED+"Correct syntax: /unban <player>");
+                plsender.sendMessage(ChatColor.RED + "Correct syntax: /unban <player>");
                 return true;
             }
             String target = args[0];
-            if(plsender.hasPermission(config.getString("perm-unban"))){
-                if(config.getString("banned_players."+target+".banned") == null){
-                    plsender.sendMessage(ChatColor.RED+"Correct syntax: /unban <player>");
+            if (plsender.hasPermission(config.getString("perm-unban"))) {
+                if (config.getString("banned_players." + target + ".banned") == null) {
+                    plsender.sendMessage(ChatColor.RED + "Correct syntax: /unban <player>");
                     return true;
                 }
-                config.set("banned_players."+target+".banned", false);
-                plsender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target+" has been unbanned!");
+                config.set("banned_players." + target + ".banned", false);
+                plsender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target + " has been unbanned!");
             }
-        }else{
+        } else {
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED+"Correct syntax: /unban <player>");
+                sender.sendMessage(ChatColor.RED + "Correct syntax: /unban <player>");
                 return true;
             }
             String target = args[0];
-            if(sender.hasPermission("mod.unban")){
-                if(config.getString("banned_players."+target+".banned") == null){
-                    sender.sendMessage(ChatColor.RED+"Correct syntax: /unban <player>");
+            if (sender.hasPermission("mod.unban")) {
+                if (config.getString("banned_players." + target + ".banned") == null) {
+                    sender.sendMessage(ChatColor.RED + "Correct syntax: /unban <player>");
                     return true;
                 }
-                config.set("banned_players."+target+".banned", false);
-                sender.sendMessage(ChatColor.YELLOW+prefix+ChatColor.RED+target+" has been unbanned!");
+                config.set("banned_players." + target + ".banned", false);
+                sender.sendMessage(ChatColor.YELLOW + prefix + ChatColor.RED + target + " has been unbanned!");
             }
         }
 
