@@ -55,6 +55,9 @@ commands:
   mute:
     description: Mute someone in the server!
     usage: "Usage: /mute <player> [reason]"
+  unmute:
+    description: Unmute someone in the server!
+    usage: "Usage: /unmute <player> [reason]"
   scraayp:
     description: test
     usage: "test"
