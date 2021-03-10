@@ -20,7 +20,6 @@ public class Mod extends JavaPlugin {
         getCommand("unban").setExecutor(new Unban());
         getCommand("mute").setExecutor(new Mute());
         getCommand("unmute").setExecutor(new Unmute());
-        getCommand("rank").setExecutor(new Rank());
         getLogger().info("Moderation has been enabled!");
         saveDefaultConfig();
     }

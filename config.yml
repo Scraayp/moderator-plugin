@@ -28,5 +28,3 @@ perm-unmute: "mod.unmute"
 perm-modlog: "mod.staff"
 
 perm-chatlock-bypass: "mod.lockbypass"
-
-perm-rank: "mod.rank"

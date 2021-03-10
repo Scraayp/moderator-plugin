@@ -58,9 +58,6 @@ commands:
   unmute:
     description: Unmute someone in the server!
     usage: "Usage: /unmute <player> [reason]"
-  rank:
-    description: Set someones rank in the server!
-    usage: "Usage: /rank <player> <rank which is set in config file>"
   scraayp:
     description: test
     usage: "test"
