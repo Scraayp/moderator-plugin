@@ -16,10 +16,6 @@ send-mod-action-in-global-chat: false
 send-mod-action-to-staff: true
 
 
-
-
-
-
 # Permissions:
 
 # NONE OF THOSE CAN BE NULL
@@ -32,3 +28,5 @@ perm-unmute: "mod.unmute"
 perm-modlog: "mod.staff"
 
 perm-chatlock-bypass: "mod.lockbypass"
+
+perm-rank: "mod.rank"

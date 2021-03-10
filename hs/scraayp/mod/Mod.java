@@ -11,16 +11,16 @@ public class Mod extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         plugin = this;
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new Chat(), this);
-        getCommand("modhelp").setExecutor(new Help());
         getCommand("kick").setExecutor(new Kick());
         getCommand("ban").setExecutor(new Ban());
         getCommand("unban").setExecutor(new Unban());
-        getCommand("scraayp").setExecutor(new Scraayp());
         getCommand("mute").setExecutor(new Mute());
         getCommand("unmute").setExecutor(new Unmute());
+        getCommand("rank").setExecutor(new Rank());
         getLogger().info("Moderation has been enabled!");
         saveDefaultConfig();
     }
