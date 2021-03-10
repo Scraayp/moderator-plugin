@@ -9,36 +9,9 @@ default-permission: op
 website: https://scraayp.ga
 api-version: 1.16
 
-
-permissions:
-  mod.*:
-    description: Get permission to use every command!
-    default: op
-    children:
-      - mod
-      - mod.kick
-      - mod.staff
-      - mod.chatbypass
-  mod:
-    description: Get acces to help command!
-    default: op
-  mod.kick:
-    description: Get acces to the kick command!
-    default: op
-  mod.staff:
-    description: People with this permission will see the ban message in chat. Target,Moderator,Reason
-    default: op
-  mod.chatbypass:
-    description: Bypass the lockdown chat
-    default: op
-
 # THE PERMISSIONS CAN BE FULL CUSTOMIZABLE IN CONFIG
 
 commands:
-  modhelp:
-    description: Get all commands and permissions!
-    aliases: [mod-help, mod, helpmod]
-    usage: "Usage: /modhelp"
   kick:
     description: Kick someone from the server!
     aliases: [getout]
@@ -55,6 +28,3 @@ commands:
   unmute:
     description: Unmute someone in the server!
     usage: "Usage: /unmute <player> [reason]"
-  scraayp:
-    description: test
-    usage: "test"

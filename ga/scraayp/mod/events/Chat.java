@@ -16,11 +16,6 @@ public class Chat implements Listener {
 
     @EventHandler
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
-        if (hasRank(event.getPlayer())) {
-            String rank = getRank(event.getPlayer());
-            String chatFormat = ChatColor.RED + "[" + rank + "]" + " %1$s" + ":" + ChatColor.RESET + " %2$s";
-            event.setFormat(chatFormat);
-        }
         if (plugin.getConfig().getConfigurationSection("muted_players") != null) {
             for (String section : plugin.getConfig().getConfigurationSection("muted_players").getKeys(false)) {
                 if (section.equals(event.getPlayer().getName())) {
