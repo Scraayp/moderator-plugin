@@ -1,4 +1,4 @@
-package hs.scraayp.mod.events;
+package ga.scraayp.mod.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import static hs.scraayp.mod.Mod.plugin;
+import static ga.scraayp.mod.Mod.plugin;
 
 public class PlayerJoin implements Listener {
     @EventHandler

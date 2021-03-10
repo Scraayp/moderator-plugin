@@ -1,15 +1,12 @@
 name: Moderator
-main: hs.scraayp.mod.Mod
+main: ga.scraayp.mod.Mod
 version: v0.0.1
 prefix: MOD
 description: Just a moderation plugin
-author: Scraayp
+author: Scraayp (Scraayp#9050 / scraayp@gmail.com)
 database: false
 default-permission: op
-website: https://discord.gg/uW6FEwd
-authors:
-  - Scraayp (Scraayp#9050)
-  - Bossier (Bossier#6643)
+website: https://scraayp.ga
 api-version: 1.16
 
 
@@ -35,7 +32,7 @@ permissions:
     description: Bypass the lockdown chat
     default: op
 
-  # THE PERMISSIONS CAN BE FULL CUSTOMIZABLE IN CONFIG
+# THE PERMISSIONS CAN BE FULL CUSTOMIZABLE IN CONFIG
 
 commands:
   modhelp:

@@ -1,6 +1,6 @@
-package hs.scraayp.mod.commands;
+package ga.scraayp.mod.commands;
 
-import hs.scraayp.mod.Mod;
+import ga.scraayp.mod.Mod;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

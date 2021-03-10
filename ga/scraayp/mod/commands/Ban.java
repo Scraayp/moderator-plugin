@@ -1,22 +1,18 @@
-package hs.scraayp.mod.commands;
+package ga.scraayp.mod.commands;
 
-import hs.scraayp.mod.Mod;
-import org.bukkit.BanList;
+import ga.scraayp.mod.Mod;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.craftbukkit.libs.org.apache.commons.lang3.StringUtils;
 import org.bukkit.entity.Player;
 
-import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
-import static hs.scraayp.mod.utils.broadcast.log;
+import static ga.scraayp.mod.utils.broadcast.log;
 import static org.bukkit.Bukkit.getOfflinePlayer;
 import static org.bukkit.Bukkit.getServer;
 

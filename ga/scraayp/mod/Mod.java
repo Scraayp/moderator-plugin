@@ -1,8 +1,8 @@
-package hs.scraayp.mod;
+package ga.scraayp.mod;
 
-import hs.scraayp.mod.commands.*;
-import hs.scraayp.mod.events.Chat;
-import hs.scraayp.mod.events.PlayerJoin;
+import ga.scraayp.mod.commands.*;
+import ga.scraayp.mod.events.Chat;
+import ga.scraayp.mod.events.PlayerJoin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 

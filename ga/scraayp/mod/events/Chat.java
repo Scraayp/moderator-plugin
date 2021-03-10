@@ -1,13 +1,13 @@
-package hs.scraayp.mod.events;
+package ga.scraayp.mod.events;
 
-import hs.scraayp.mod.Mod;
+import ga.scraayp.mod.Mod;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import static hs.scraayp.mod.Mod.plugin;
+import static ga.scraayp.mod.Mod.plugin;
 import static hs.scraayp.mod.ranks.RankSystem.*;
 
 public class Chat implements Listener {
