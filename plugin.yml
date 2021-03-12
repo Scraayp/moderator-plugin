@@ -1,6 +1,6 @@
 name: Moderator
 main: ga.scraayp.mod.Mod
-version: v0.0.1
+version: 0.0.1
 prefix: MOD
 description: Just a moderation plugin
 author: Scraayp (Scraayp#9050 / scraayp@gmail.com)

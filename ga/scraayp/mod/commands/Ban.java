@@ -22,7 +22,7 @@ public class Ban implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+            if (sender instanceof Player) {
             Player plsender = (Player) sender;
             if (args.length == 0) {
                 plsender.sendMessage(ChatColor.RED + "Correct syntax: /ban <player> [reason]");
