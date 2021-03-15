@@ -18,9 +18,9 @@
 
 ## Usage
 
-```sh
-/mod in chat
-```
+- Add the plugin to the plugins folder. [More detailed](https://bukkit.gamepedia.com/Installing_Plugins)
+- Reload/restart server
+- Use /mod in server chat to check if plugin is working
 
 ## Author
 
