@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h1 align="center">Welcome to moderator-plugin 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
@@ -40,8 +39,4 @@ Give a ⭐️ if this project helped you!
 Copyright © 2021 [Scraayp](https://github.com/Scraayp).<br />
 This project is [MIT](https://scraayp.ga/LICENSE ) licensed.
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
-=======
-
->>>>>>> adf50f3769c7b7af89e062c9f031729f88710b76
+---
