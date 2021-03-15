@@ -14,7 +14,7 @@
 
 > Simple spigot moderation plugin
 
-### 🏠 [Homepage](https://scraayp.ga//moderator)
+### 🏠 [Homepage](https://scraayp.ga/moderator/)
 
 ## Usage
 
