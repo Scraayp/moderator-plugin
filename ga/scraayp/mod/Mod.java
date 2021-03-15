@@ -1,8 +1,7 @@
 package ga.scraayp.mod;
 
 import ga.scraayp.mod.commands.*;
-import ga.scraayp.mod.events.Chat;
-import ga.scraayp.mod.events.PlayerJoin;
+import ga.scraayp.mod.events.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
