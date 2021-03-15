@@ -14,7 +14,7 @@
 
 > Simple spigot moderation plugin
 
-### 🏠 [Homepage](https://scraayp.ga//moderator)
+### 🏠 [Homepage](https://scraayp.ga/moderator/)
 
 ## Usage
 
@@ -39,5 +39,4 @@ Give a ⭐️ if this project helped you!
 Copyright © 2021 [Scraayp](https://github.com/Scraayp).<br />
 This project is [MIT](https://scraayp.ga/LICENSE ) licensed.
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+---
